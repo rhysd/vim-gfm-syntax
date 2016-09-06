@@ -3,22 +3,32 @@ if !get(b:, 'gfm_syntax_enable', 1)
 endif
 
 " inline code
-syn region githubFlavoredMarkdownCode start="[^`]\zs`[^`]" end="`" display
+if g:gfm_syntax_enable_inline_code
+    syn region githubFlavoredMarkdownCode start="[^`]\zs`[^`]" end="`" display
+endif
 
 " mentions
-syn match githubFlavoredMarkdownMention "@\S\+" display
+if g:gfm_syntax_enable_mention
+    syn match githubFlavoredMarkdownMention "@\S\+" display
+endif
 
 " strikethrough
-syn region githubFlavoredMarkdownStrikethrough start="\~\~" end="\~\~"
+if g:gfm_syntax_enable_strikethrough
+    syn region githubFlavoredMarkdownStrikethrough start="\~\~" end="\~\~"
+endif
 
 " emoji
-syn match githubFlavoredMarkdownEmoji ":\w\+:" display
+if g:gfm_syntax_enable_emoji
+    syn match githubFlavoredMarkdownEmoji ":\w\+:" display
+endif
 
 " table
-syn match githubFlavoredMarkdownTable "^\s*\(\> \)\?\s*\zs|.\+|\ze\s*$" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableBorder
-syn match githubFlavoredMarkdownTableDelimiter "|" contained containedin=githubFlavoredMarkdownTable display
-syn match githubFlavoredMarkdownTableAligner ":" contained containedin=githubFlavoredMarkdownTable display
-syn match githubFlavoredMarkdownTableBorder "[\-+]\+" contained containedin=githubFlavoredMarkdownTable display
+if g:gfm_syntax_enable_table
+    syn match githubFlavoredMarkdownTable "^\s*\(\> \)\?\s*\zs|.\+|\ze\s*$" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableBorder
+    syn match githubFlavoredMarkdownTableDelimiter "|" contained containedin=githubFlavoredMarkdownTable display
+    syn match githubFlavoredMarkdownTableAligner ":" contained containedin=githubFlavoredMarkdownTable display
+    syn match githubFlavoredMarkdownTableBorder "[\-+]\+" contained containedin=githubFlavoredMarkdownTable display
+endif
 
 hi def link githubFlavoredMarkdownCode Constant
 hi def link githubFlavoredMarkdownMention htmlLink
