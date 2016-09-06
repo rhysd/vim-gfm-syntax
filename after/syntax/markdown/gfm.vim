@@ -22,6 +22,9 @@ if g:gfm_syntax_highlight_emoji
     syn match githubFlavoredMarkdownEmoji ":\w\+:" display
 endif
 
+" issue number
+" TODO
+
 " table
 if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTable "^\s*\(\> \)\?\s*\zs|.\+|\ze\s*$" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableBorder
