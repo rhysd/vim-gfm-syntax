@@ -1,29 +1,29 @@
-if !get(b:, 'gfm_syntax_enable', 1)
+if !g:gfm_syntax_enable || index(g:gfm_sytnax_enable_filetypes, &l:filetype) == -1
     finish
 endif
 
 " inline code
-if g:gfm_syntax_enable_inline_code
+if g:gfm_syntax_highlight_inline_code
     syn region githubFlavoredMarkdownCode start="[^`]\zs`[^`]" end="`" display
 endif
 
 " mentions
-if g:gfm_syntax_enable_mention
+if g:gfm_syntax_highlight_mention
     syn match githubFlavoredMarkdownMention "@\S\+" display
 endif
 
 " strikethrough
-if g:gfm_syntax_enable_strikethrough
+if g:gfm_syntax_highlight_strikethrough
     syn region githubFlavoredMarkdownStrikethrough start="\~\~" end="\~\~"
 endif
 
 " emoji
-if g:gfm_syntax_enable_emoji
+if g:gfm_syntax_highlight_emoji
     syn match githubFlavoredMarkdownEmoji ":\w\+:" display
 endif
 
 " table
-if g:gfm_syntax_enable_table
+if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTable "^\s*\(\> \)\?\s*\zs|.\+|\ze\s*$" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableBorder
     syn match githubFlavoredMarkdownTableDelimiter "|" contained containedin=githubFlavoredMarkdownTable display
     syn match githubFlavoredMarkdownTableAligner ":" contained containedin=githubFlavoredMarkdownTable display
