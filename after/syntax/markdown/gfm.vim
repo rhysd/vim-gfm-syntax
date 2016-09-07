@@ -19,7 +19,7 @@ endif
 
 " emoji
 if g:gfm_syntax_highlight_emoji
-    syn match githubFlavoredMarkdownEmoji ":\w\+:" display
+    syn match githubFlavoredMarkdownEmoji ":[[:alnum:]_+-]\+:" display
 endif
 
 " issue number
