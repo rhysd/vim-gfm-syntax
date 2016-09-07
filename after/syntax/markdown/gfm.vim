@@ -4,7 +4,7 @@ endif
 
 " inline code
 if g:gfm_syntax_highlight_inline_code
-    syn region githubFlavoredMarkdownCode start="\%(^\|[^`]\)\zs`[^`]" end="`" display oneline
+    syn region githubFlavoredMarkdownCode start="\%(^\|[^`\\]\)\zs`[^`]" end="`" display oneline
 endif
 
 " mentions
