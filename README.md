@@ -13,7 +13,13 @@ Supports for below syntax are added:
 | Emoji        | :dog:   |
 | Table        | This!   |
 
-![screenshot]()
+## Screenshot
+
+| Before | After |
+|--------|-------|
+|![before](https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/before.png)|![after](https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/after.png)|
+
+## Usage
 
 By default, this plugin is enabled for all `markdown` filetype files.
 
@@ -43,6 +49,8 @@ If you want to support specific feature of GFM, you can control them to be highl
 - `g:gfm_syntax_highlight_emoji`: If `0`, emojis won't be highlighted.
 - `g:gfm_syntax_highlight_table`: If `0`, tables won't be highlighted.
 - `g:gfm_syntax_highlight_issue_number`: If `0`, issue number won't be highlighted
+
+## License
 
 This plugin is distributed under the MIT License.
 
