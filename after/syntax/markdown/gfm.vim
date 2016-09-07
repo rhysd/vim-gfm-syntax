@@ -23,7 +23,9 @@ if g:gfm_syntax_highlight_emoji
 endif
 
 " issue number
-" TODO
+if g:gfm_syntax_highlight_issue_number
+    syn match githubFlavoredMarkdownIssueNumber "#\@<!#\d\+\>" display
+endif
 
 " table
 if g:gfm_syntax_highlight_table
@@ -40,4 +42,4 @@ hi def link githubFlavoredMarkdownEmoji PreProc
 hi def link githubFlavoredMarkdownTableDelimiter Delimiter
 hi def link githubFlavoredMarkdownTableAligner Delimiter
 hi def link githubFlavoredMarkdownTableBorder Type
-
+hi def link githubFlavoredMarkdownIssueNumber Number

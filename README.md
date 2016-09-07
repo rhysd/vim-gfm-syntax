@@ -42,6 +42,7 @@ If you want to support specific feature of GFM, you can control them to be highl
 - `g:gfm_syntax_highlight_strikethrough`: If `0`, strikethrough won't be highlighted.
 - `g:gfm_syntax_highlight_emoji`: If `0`, emojis won't be highlighted.
 - `g:gfm_syntax_highlight_table`: If `0`, tables won't be highlighted.
+- `g:gfm_syntax_highlight_issue_number`: If `0`, issue number won't be highlighted
 
 This plugin is distributed under the MIT License.
 
