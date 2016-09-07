@@ -13,11 +13,13 @@ Supports for below syntax are added:
 | Emoji        | :dog:   |
 | Table        | This!   |
 
+
 ## Screenshot
 
 | Before | After |
 |--------|-------|
 |![before](https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/before.png)|![after](https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/after.png)|
+
 
 ## Usage
 
@@ -43,12 +45,22 @@ In above Example, C++, Ruby and JSON code blocks will be highlighted with their 
 
 If you want to support specific feature of GFM, you can control them to be highlighted by some variables.
 
-- `g:gfm_syntax_highlight_inline_code`: If `0`, inline codes won't be highlighted.
-- `g:gfm_syntax_highlight_mention`: If `0`, mentions won't be highlighted.
-- `g:gfm_syntax_highlight_strikethrough`: If `0`, strikethrough won't be highlighted.
-- `g:gfm_syntax_highlight_emoji`: If `0`, emojis won't be highlighted.
-- `g:gfm_syntax_highlight_table`: If `0`, tables won't be highlighted.
-- `g:gfm_syntax_highlight_issue_number`: If `0`, issue number won't be highlighted
+| Variable                               | Description                                 |
+|----------------------------------------|---------------------------------------------|
+| `g:gfm_syntax_highlight_inline_code`   | If `0`, inline codes won't be highlighted.  |
+| `g:gfm_syntax_highlight_mention`       | If `0`, mentions won't be highlighted.      |
+| `g:gfm_syntax_highlight_strikethrough` | If `0`, strikethrough won't be highlighted. |
+| `g:gfm_syntax_highlight_emoji`         | If `0`, emojis won't be highlighted.        |
+| `g:gfm_syntax_highlight_table`         | If `0`, tables won't be highlighted.        |
+| `g:gfm_syntax_highlight_issue_number`  | If `0`, issue number won't be highlighted   |
+
+If you want to use your favorite colors for syntax highlights, you can override highlight definitions.  Below configration is an example where inline code will be highlighted with `CursorLine` highlight.
+
+```vim
+autocmd ColorScheme * highlight link githubFlavoredMarkdownCode CursorLine
+```
+
+`githubFlavoredMarkdownCode` is a highlight rule for inline code.  For other rules, please see [after/syntax/markdown/gfm.vim](after/syntax/markdown/gfm.vim).  There are so many colorschemes for Vim.  One syntax file can't consider all of them.  If you feel some highlighting is not good, please customize by yourself.
 
 ## License
 
