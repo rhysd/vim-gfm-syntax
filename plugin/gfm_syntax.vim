@@ -11,5 +11,6 @@ let g:gfm_syntax_highlight_strikethrough = get(g:, 'gfm_syntax_highlight_striket
 let g:gfm_syntax_highlight_emoji = get(g:, 'gfm_syntax_highlight_emoji', 1)
 let g:gfm_syntax_highlight_table = get(g:, 'gfm_syntax_highlight_table', 1)
 let g:gfm_syntax_highlight_issue_number = get(g:, 'gfm_syntax_highlight_issue_number', 1)
+let g:gfm_syntax_highlight_checkbox = get(g:, 'gfm_syntax_highlight_checkbox', 1)
 
 let g:loaded_gfm_syntax = 1

@@ -34,14 +34,22 @@ if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTableAligner ":-\@=" contained containedin=githubFlavoredMarkdownTableAlignBorder display
     syn match githubFlavoredMarkdownTableAligner "-\@<=:" contained containedin=githubFlavoredMarkdownTableAlignBorder display
     syn match githubFlavoredMarkdownTableBorder "-\+" contained containedin=githubFlavoredMarkdownTableAlignBorder display
-    syn match githubFlavoredMarkdownTableDelimiter "|" contained containedin=githubFlavoredMarkdownTable display
+    syn match githubFlavoredMarkdownTableDelimiter "-\@<!|" contained containedin=githubFlavoredMarkdownTable display
 endif
 
-hi def link githubFlavoredMarkdownCode Constant
-hi def link githubFlavoredMarkdownMention htmlLink
-hi def link githubFlavoredMarkdownStrikethrough Comment
-hi def link githubFlavoredMarkdownEmoji PreProc
-hi def link githubFlavoredMarkdownTableDelimiter Delimiter
-hi def link githubFlavoredMarkdownTableAligner Delimiter
-hi def link githubFlavoredMarkdownTableBorder Type
-hi def link githubFlavoredMarkdownIssueNumber Number
+if g:gfm_syntax_highlight_checkbox
+    syn match githubFlavoredMarkdownCheckBox "\%(\_^\s*-\s\+\)\@<=\[[ x]]" contains=githubFlavoredMarkdownCheckBoxBracket,githubFlavoredMarkdownCheckBoxX
+    syn match githubFlavoredMarkdownCheckBoxBracket "\[\|]" contained containedin=githubFlavoredMarkdownCheckBox
+    syn keyword githubFlavoredMarkdownCheckBoxX x contained containedin=githubFlavoredMarkdownCheckBox
+endif
+
+hi def link githubFlavoredMarkdownCode            Constant
+hi def link githubFlavoredMarkdownMention         markdownLinkText
+hi def link githubFlavoredMarkdownStrikethrough   Comment
+hi def link githubFlavoredMarkdownEmoji           PreProc
+hi def link githubFlavoredMarkdownTableDelimiter  Delimiter
+hi def link githubFlavoredMarkdownTableAligner    Delimiter
+hi def link githubFlavoredMarkdownTableBorder     Type
+hi def link githubFlavoredMarkdownIssueNumber     Number
+hi def link githubFlavoredMarkdownCheckBoxBracket markdownListMarker
+hi def link githubFlavoredMarkdownCheckBoxX       Special

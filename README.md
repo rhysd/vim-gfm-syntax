@@ -11,6 +11,7 @@ Supports for below syntax are added:
 | Mentions     | @rhysd  |
 | Issue number | #123    |
 | Emoji        | :dog:   |
+| Check box    | `- [x]` |
 | Table        | This!   |
 
 
@@ -53,6 +54,7 @@ If you want to support specific feature of GFM, you can control them to be highl
 | `g:gfm_syntax_highlight_emoji`         | If `0`, emojis won't be highlighted.        |
 | `g:gfm_syntax_highlight_table`         | If `0`, tables won't be highlighted.        |
 | `g:gfm_syntax_highlight_issue_number`  | If `0`, issue number won't be highlighted   |
+| `g:gfm_syntax_highlight_checkbox`      | If `0`, check box won't be highlighted      |
 
 If you want to use your favorite colors for syntax highlights, you can override highlight definitions.  Below configration is an example where inline code will be highlighted with `CursorLine` highlight.
 
