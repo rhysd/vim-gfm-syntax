@@ -29,7 +29,7 @@ endif
 
 " table
 if g:gfm_syntax_highlight_table
-    syn match githubFlavoredMarkdownTable "\%(\_^\s*\)\@<=|.\+|\%(\s*\_$\)\@=" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableAlignBorder,githubFlavoredMarkdownTableBorderAligner,githubFlavoredMarkdownTableBorder
+    syn match githubFlavoredMarkdownTable "^|.\+|\s*$" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableAlignBorder,githubFlavoredMarkdownTableBorderAligner,githubFlavoredMarkdownTableBorder
     syn match githubFlavoredMarkdownTableAlignBorder ":-\+:" contained containedin=githubFlavoredMarkdownTable display
     syn match githubFlavoredMarkdownTableAligner ":-\@=" contained containedin=githubFlavoredMarkdownTableAlignBorder display
     syn match githubFlavoredMarkdownTableAligner "-\@<=:" contained containedin=githubFlavoredMarkdownTableAlignBorder display

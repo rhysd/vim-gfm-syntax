@@ -230,11 +230,11 @@ Describe 'Highlight'
         It highlights indented table
             normal! 7j
             normal! f|
-            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
             normal! f|
-            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
             normal! f|
-            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
         End
 
         It does not highlight escaped | and : which is not included in border
