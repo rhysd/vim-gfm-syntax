@@ -49,6 +49,11 @@ edge case are ::, :, :=:
 Following - [x] is also not highlighted.
 - [x not highlighted
 
+* [x] asterisk
+
+1. [x] even enumeration!
+
+
 
 ## Table
 

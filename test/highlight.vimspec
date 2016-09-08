@@ -191,6 +191,26 @@ Describe 'Highlight'
             normal! fx
             Assert NotHighlight('githubFlavoredMarkdownCheckBoxX')
         End
+
+        It highlights check box with sterisk list
+            normal! 11j
+            normal! f[
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert Highlight('githubFlavoredMarkdownCheckBoxX')
+            normal! f]
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
+
+        It even highlights check box with enumerated list
+            normal! 13j
+            normal! f[
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert Highlight('githubFlavoredMarkdownCheckBoxX')
+            normal! f]
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
     End
 
     Describe githubFlavoredMarkdownTable
