@@ -34,7 +34,7 @@ if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTableAligner ":-\@=" contained containedin=githubFlavoredMarkdownTableAlignBorder display
     syn match githubFlavoredMarkdownTableAligner "-\@<=:" contained containedin=githubFlavoredMarkdownTableAlignBorder display
     syn match githubFlavoredMarkdownTableBorder "-\+" contained containedin=githubFlavoredMarkdownTableAlignBorder display
-    syn match githubFlavoredMarkdownTableDelimiter "-\@<!|" contained containedin=githubFlavoredMarkdownTable display
+    syn match githubFlavoredMarkdownTableDelimiter "\\\@<!|" contained containedin=githubFlavoredMarkdownTable display
 endif
 
 if g:gfm_syntax_highlight_checkbox
