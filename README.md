@@ -1,5 +1,6 @@
 GitHub Flavored Markdown Syntax Extension for Vim
 =================================================
+[![Build Status](https://travis-ci.org/rhysd/vim-gfm-syntax.svg?branch=master)](https://travis-ci.org/rhysd/vim-gfm-syntax)
 
 This Vim plugin provides extra syntax highlight for [GitHub Flavored Markdown](https://help.github.com/categories/writing-on-github/). GitHub adds their extra features to Markdown.  This plugin fills the gap between normal Markdown and GitHub Flavored Markdown.
 
