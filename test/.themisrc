@@ -1,0 +1,27 @@
+let g:repo_root = fnamemodify(expand('<sfile>'), ':h:h')
+
+call themis#option('exclude', 'test/Guardfile')
+call themis#option('exclude', 'test/test.md')
+
+function! s:assert_highlight(name) abort
+    let name = synIDattr(synID(line('.'), col('.'), 1), 'name')
+    if name !=# a:name
+        throw themis#failure(printf("Highlight mismatch at line:%d, col:%d.\n  Expected: '%s'\n  Actual:   '%s'", line('.'), col('.'), a:name, name))
+    endif
+    return 1
+endfunction
+
+function! s:assert_not_highlight(name) abort
+    let name = synIDattr(synID(line('.'), col('.'), 1), 'name')
+    if name ==# a:name
+        throw themis#failure(printf("Unexpected highlight '%s' at line:%d, col:%d.", name, line('.'), col('.')))
+    endif
+    return 1
+endfunction
+
+let s:helper = themis#helper('assert')
+let s:helper['highlight'] = function('s:assert_highlight')
+let s:helper['not_highlight'] = function('s:assert_not_highlight')
+call themis#helper('command').with(s:helper)
+unlet s:helper
+

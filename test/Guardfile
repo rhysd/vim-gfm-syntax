@@ -1,0 +1,19 @@
+def run(target)
+  if system "./vim-themis/bin/themis", target
+    puts "OK"
+  else
+    puts "NG"
+  end
+end
+
+guard :shell do
+  watch /^.+\.vim$/ do |m|
+    puts "start #{m[0]}"
+    run "./test/"
+  end
+
+  watch /^.+\.vimspec$/ do |m|
+    puts "start #{m[0]}"
+    run m[0]
+  end
+end

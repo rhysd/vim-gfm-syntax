@@ -1,4 +1,4 @@
-if (exists('g:loaded_gfm_syntax') && g:loaded_gfm_syntax) || &cp
+if (exists('g:loaded_gfm_syntax') && g:loaded_gfm_syntax) || &compatible
     finish
 endif
 
