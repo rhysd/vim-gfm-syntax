@@ -1,9 +1,5 @@
 def run(target)
-  if system "./vim-themis/bin/themis", target
-    puts "OK"
-  else
-    puts "NG"
-  end
+  puts(system("./vim-themis/bin/themis", target) ? "OK" : "NG")
 end
 
 guard :shell do
