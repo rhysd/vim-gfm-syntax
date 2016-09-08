@@ -1,0 +1,261 @@
+function! s:move_to(section) abort
+    normal! gg0
+    call search('\n\n## ' . a:section, 'e')
+    normal! 0
+    if line('.') == 1 && col('.') == 1
+        throw 'Cursor did not move!'
+    endif
+endfunction
+
+Describe 'Highlight'
+    Before each
+        syntax enable
+        execute 'view' printf("%s/test/test.md", g:repo_root)
+        set ft=markdown
+    End
+
+    After each
+        bdelete!
+    End
+
+    Describe githubFlavoredMarkdownCode
+        Before each
+            call s:move_to('Inline code')
+        End
+
+        It highlights an inline code at the head of line
+            normal! 2j
+            Assert Highlight('githubFlavoredMarkdownCode')
+            normal! 4l
+            Assert Highlight('githubFlavoredMarkdownCode')
+        End
+
+        It highlights an inline code at the middle of line
+            normal! 4j
+            Assert NotHighlight('githubFlavoredMarkdownCode')
+            normal! 10l
+            Assert Highlight('githubFlavoredMarkdownCode')
+        End
+
+        It does not highlight escaped backquote
+            normal! 6j
+            Assert NotHighlight('githubFlavoredMarkdownCode')
+            normal! l
+            Assert NotHighlight('githubFlavoredMarkdownCode')
+        End
+    End
+
+    Describe githubFlavoredMarkdownMention
+        Before each
+            call s:move_to('Mentions')
+        End
+
+        It highlights @name
+            normal! 2j
+            Assert Highlight('githubFlavoredMarkdownMention')
+            normal! f@
+            Assert Highlight('githubFlavoredMarkdownMention')
+            normal! f@
+            Assert Highlight('githubFlavoredMarkdownMention')
+            normal! $
+            Assert Highlight('githubFlavoredMarkdownMention')
+        End
+
+        It does not highlight '@' only text
+            normal! 4j
+            normal! f@
+            Assert NotHighlight('githubFlavoredMarkdownMention')
+        End
+    End
+
+    Describe githubFlavoredMarkdownStrikethrough
+        Before each
+            call s:move_to('Strikethrough')
+        End
+
+        It highlights ~~strikethrough text~~
+            normal! 2j
+            Assert NotHighlight('githubFlavoredMarkdownStrikethrough')
+            normal! fh
+            Assert Highlight('githubFlavoredMarkdownStrikethrough')
+            normal! $
+            Assert Highlight('githubFlavoredMarkdownStrikethrough')
+        End
+
+        It highlights multi-line ~~text~~
+            normal! 4j
+            Assert Highlight('githubFlavoredMarkdownStrikethrough')
+            normal! j
+            Assert Highlight('githubFlavoredMarkdownStrikethrough')
+            normal! j
+            Assert Highlight('githubFlavoredMarkdownStrikethrough')
+            normal! j
+            Assert NotHighlight('githubFlavoredMarkdownStrikethrough')
+        End
+    End
+
+    Describe githubFlavoredMarkdownEmoji
+        Before each
+            call s:move_to('Emoji')
+        End
+
+        It highlights :emoji:
+            normal! 2j
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+            normal! l
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+            normal! fi
+            Assert NotHighlight('githubFlavoredMarkdownEmoji')
+            normal! f:
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+            normal! $
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+        End
+
+        It highlights :+1: and :-1:
+            normal! 4j
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+            normal! 2f:
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+        End
+
+        It does not highlight some edge cases
+            normal! 6j
+            normal! f:
+            Assert NotHighlight('githubFlavoredMarkdownEmoji')
+            normal! f:
+            Assert NotHighlight('githubFlavoredMarkdownEmoji')
+            normal! f:
+            Assert NotHighlight('githubFlavoredMarkdownEmoji')
+            normal! f:
+            Assert NotHighlight('githubFlavoredMarkdownEmoji')
+            normal! $
+            Assert NotHighlight('githubFlavoredMarkdownEmoji')
+        End
+    End
+
+    Describe githubFlavoredMarkdownEmoji
+        Before each
+            call s:move_to('Checkbox')
+        End
+
+        It highlights empty checkbox
+            normal! 2j
+            normal! f[
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! f]
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
+
+        It highlights checked checkbox
+            normal! 3j
+            normal! f[
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert Highlight('githubFlavoredMarkdownCheckBoxX')
+            normal! f]
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+
+            normal! j0
+            normal! f[
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert Highlight('githubFlavoredMarkdownCheckBoxX')
+            normal! f]
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
+
+        It does not highlight checkbox which does not follow list item
+            normal! 7j
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! l
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxX')
+            normal! l
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
+
+        It does not highlight checkbox which is not at head of the line
+            normal! 8j
+            normal! f[
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxX')
+            normal! f]
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
+
+        It does not highlight ]-lacked checkbox
+            normal! 9j
+            normal! f[
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert NotHighlight('githubFlavoredMarkdownCheckBoxX')
+        End
+    End
+
+    Describe githubFlavoredMarkdownTable
+        Before each
+            call s:move_to('Table')
+        End
+
+        It highlights the border of table
+            normal! 2j
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+
+            normal! j0
+            for c in range(1, col('$') - 1)
+                call cursor(line('.'), c)
+                let ch = getline('.')[c - 1]
+                if ch ==# ':'
+                    Assert Highlight('githubFlavoredMarkdownTableAligner')
+                elseif ch ==# '|'
+                    Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+                else
+                    Assert Highlight('githubFlavoredMarkdownTableBorder')
+                endif
+            endfor
+
+            normal! j0
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+        End
+
+        It highlights indented table
+            normal! 7j
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f|
+            Assert Highlight('githubFlavoredMarkdownTableDelimiter')
+        End
+
+        It does not highlight escaped | and : which is not included in border
+            normal! 4j
+            normal! f:
+            Assert NotHighlight('githubFlavoredMarkdownTableAligner')
+            normal! j0
+            normal! 2f|
+            Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
+        End
+
+        It does not highlight |, : and - in a normal text
+            normal! 11j
+            normal! f|
+            Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
+            normal! f:
+            Assert NotHighlight('githubFlavoredMarkdownTableAligner')
+            normal! 2f-
+            Assert NotHighlight('githubFlavoredMarkdownTableBorder')
+            normal! f|
+            Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
+        End
+    End
+End
