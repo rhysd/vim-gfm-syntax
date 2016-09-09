@@ -1,5 +1,5 @@
 def run(target)
-  puts(system("./vim-themis/bin/themis", target) ? "OK" : "NG")
+  puts(system("./vim-themis/bin/themis", target.to_s) ? "OK" : "NG")
 end
 
 guard :shell do

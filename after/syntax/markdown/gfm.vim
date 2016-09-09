@@ -1,23 +1,31 @@
-if !g:gfm_syntax_enable || index(g:gfm_sytnax_enable_filetypes, &l:filetype) == -1
+if !g:gfm_syntax_enable && index(g:gfm_sytnax_enable_filetypes, &l:filetype) == -1
     finish
 endif
 
-" inline code
+" Inline code
+"
+" This is `inline` code.
 if g:gfm_syntax_highlight_inline_code
     syn region githubFlavoredMarkdownCode start="\%(^\|[^`\\]\)\zs`[^`]" end="`" display oneline
 endif
 
-" mentions
+" Mentions
+"
+" @rhysd @foo/bar
 if g:gfm_syntax_highlight_mention
     syn match githubFlavoredMarkdownMention "@\S\+" display
 endif
 
-" strikethrough
+" Strikethrough
+"
+" ~~This text is deleted~~
 if g:gfm_syntax_highlight_strikethrough
     syn region githubFlavoredMarkdownStrikethrough start="\~\~" end="\~\~"
 endif
 
-" emoji
+" Emoji
+"
+" :dog:
 if g:gfm_syntax_highlight_emoji
     syn match githubFlavoredMarkdownEmoji ":[[:alnum:]_+-]\+:" display
 endif
@@ -27,7 +35,11 @@ if g:gfm_syntax_highlight_issue_number
     syn match githubFlavoredMarkdownIssueNumber "#\@<!#\d\+\>" display
 endif
 
-" table
+" Table
+"
+" |  A  |  B  |
+" | Foo | Woo |
+" | Bar | Hoo |
 if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTable "^|.\+|\s*$" contains=githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableAlignBorder,githubFlavoredMarkdownTableBorderAligner,githubFlavoredMarkdownTableBorder
     syn match githubFlavoredMarkdownTableAlignBorder ":-\+:" contained containedin=githubFlavoredMarkdownTable display
@@ -37,6 +49,10 @@ if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTableDelimiter "\\\@<!|" contained containedin=githubFlavoredMarkdownTable display
 endif
 
+" Check box
+"
+" - [x] Checked
+" - [ ] Not checked
 if g:gfm_syntax_highlight_checkbox
     syn match githubFlavoredMarkdownCheckBox "\%(\_^\s*\%(-\|\*\|\d\+\.\)\s\+\)\@<=\[[ x]]" contains=githubFlavoredMarkdownCheckBoxBracket,githubFlavoredMarkdownCheckBoxX
     syn match githubFlavoredMarkdownCheckBoxBracket "\[\|]" contained containedin=githubFlavoredMarkdownCheckBox
@@ -53,3 +69,5 @@ hi def link githubFlavoredMarkdownTableBorder     Type
 hi def link githubFlavoredMarkdownIssueNumber     Number
 hi def link githubFlavoredMarkdownCheckBoxBracket markdownListMarker
 hi def link githubFlavoredMarkdownCheckBoxX       Special
+
+let b:gfm_syntax_enabled = 1
