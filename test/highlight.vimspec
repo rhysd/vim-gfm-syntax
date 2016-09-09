@@ -134,7 +134,7 @@ Describe 'Highlight'
         End
     End
 
-    Describe githubFlavoredMarkdownEmoji
+    Describe githubFlavoredMarkdownCheckBox
         Before each
             call s:move_to('Checkbox')
         End
