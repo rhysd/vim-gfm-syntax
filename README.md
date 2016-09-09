@@ -65,6 +65,20 @@ autocmd ColorScheme * highlight link githubFlavoredMarkdownCode CursorLine
 
 `githubFlavoredMarkdownCode` is a highlight rule for inline code.  For other rules, please see [after/syntax/markdown/gfm.vim](after/syntax/markdown/gfm.vim).  There are so many colorschemes for Vim.  One syntax file can't consider all of them.  If you feel some highlighting is not good, please customize by yourself.
 
+
+## What is the Difference from [vim-flavored-markdown](https://github.com/jtratner/vim-flavored-markdown)?
+
+[vim-flavored-markdown](https://github.com/jtratner/vim-flavored-markdown) was created for the same purpose as this plugin, and it works well.
+But it does not match to my usecase in terms of below points.
+
+- vim-flavored-markdown introduces new filetype `ghmarkdown`.
+  This is useful if you want to distinguish Markdown and GFM.
+  Otherwise, it kills original `markdown` filetype.
+  It means that many other plugins for `markdown` filetype are killed as well.
+- Because vim-flavored-markdown is a fork of old version of [vim-markdown](https://github.com/tpope/vim-markdown), it lacks some improvements (e.g. code block highlight).
+- vim-gfm-syntax supports more GFM syntax (e.g. checkbox), well-tested (with [themis.vim](https://github.com/thinca/vim-themis)), customizable (you can choose which syntax should be highlighted).
+
+
 ## License
 
 This plugin is distributed under the MIT License.
