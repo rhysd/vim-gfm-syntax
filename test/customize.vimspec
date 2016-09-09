@@ -1,0 +1,98 @@
+Describe g:gfm_sytnax_enable_filetypes
+    Before each
+        let g:gfm_syntax_enable = 0
+        let g:gfm_sytnax_enable_filetypes = ['markdown.gfm']
+        augroup TestGFMCustomize
+            autocmd!
+            autocmd BufRead,BufNew,BufNewFile *.md setlocal ft=markdown.gfm
+        augroup END
+        syntax enable
+        execute 'view' printf("%s/test/test.md", g:repo_root)
+        if &ft !=# 'markdown.gfm'
+            throw printf("Precondition failed, filetype is '%s'", &ft)
+        endif
+    End
+
+    After each
+        bdelete!
+        autocmd! TestGFMCustomize
+        let g:gfm_syntax_enable = 1
+        let g:gfm_sytnax_enable_filetypes = ['markdown']
+    End
+
+    It enables GFM syntax highlight extension on 'markdown.gfm' filetype
+        Assert True(b:gfm_syntax_enabled)
+        normal! gg0
+        call search('\n\n## Inline code', 'e')
+        normal! 0
+        normal! 2j
+        Assert Highlight('githubFlavoredMarkdownCode')
+        normal! 4l
+        Assert Highlight('githubFlavoredMarkdownCode')
+    End
+End
+
+Describe g:gfm_syntax_highlight_xxx
+    Before each
+        let g:gfm_syntax_highlight_inline_code = 0
+        syntax enable
+        execute 'view' printf("%s/test/test.md", g:repo_root)
+        set ft=markdown
+    End
+
+    After each
+        bdelete!
+        let g:gfm_syntax_highlight_inline_code = 1
+    End
+
+    It disables specific syntax highlight when 0
+        normal! gg0
+        call search('\n\n## Inline code', 'e')
+        normal! 0
+        normal! 2j
+        Assert NotHighlight('githubFlavoredMarkdownCode')
+        normal! 4l
+        Assert NotHighlight('githubFlavoredMarkdownCode')
+    End
+
+    It does not enable other syntax highlights
+        normal! gg0
+        call search('\n\n## Mentions', 'e')
+        normal! 0
+        normal! 2j
+        Assert Highlight('githubFlavoredMarkdownMention')
+        normal! f@
+        Assert Highlight('githubFlavoredMarkdownMention')
+        normal! f@
+        Assert Highlight('githubFlavoredMarkdownMention')
+        normal! $
+        Assert Highlight('githubFlavoredMarkdownMention')
+    End
+End
+
+Describe Redefinition of syntax highlight rule
+    Before each
+        augroup TestGFMCustomizeColor
+            autocmd!
+            autocmd ColorScheme * highlight link githubFlavoredMarkdownCode CursorLine
+        augroup END
+        syntax enable
+        colorscheme default
+        execute 'view' printf("%s/test/test.md", g:repo_root)
+        set ft=markdown
+    End
+
+    After each
+        bdelete!
+        autocmd! TestGFMCustomizeColor
+    End
+
+    It overrides original syntax highlight definition
+        normal! gg0
+        call search('\n\n## Inline code', 'e')
+        normal! 0
+        normal! 2j
+        let hl = synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+        Assert Equal(hl, 'CursorLine')
+    End
+End
