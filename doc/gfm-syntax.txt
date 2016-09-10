@@ -1,0 +1,68 @@
+*vim-gfm-syntax*       GFM syntax extension for markdown filetype
+
+Author : rhysd <lin90162@yahoo.co.jp>
+Version : 1.0
+
+CONTENTS                *vim-gfm-sytnax-contents*
+
+Introduction            |vim-gfm-sytnax-introduction|
+Install                 |vim-gfm-sytnax-install|
+License                 |vim-gfm-sytnax-lisence|
+
+==============================================================================
+INTRODUCTION                                  *vim-gfm-sytnax-introduction*
+
+*gfm-syntax* provides extra syntax highlight for GitHub Flavored Markdown.
+GitHub adds their extra features to Markdown.  This plugin fills the gap
+between normal Markdown and GitHub Flavored Markdown.
+
+Ref: https://help.github.com/categories/writing-on-github/
+
+This plugin is enabled automatically on "markdown" filetype.  For more
+customization, please see README.
+
+https://github.com/rhysd/vim-gfm-syntax#readme
+
+
+==============================================================================
+INSTALL                                            *vim-gfm-sytnax-install*
+
+If you don't use any plugin manager, copy all files in after/, plugin/ and
+doc/ to your .vim directory.
+
+If you use a plugin manager, please follow the instruction of it to install
+|gfm-sytnax|.
+
+Below is an example for |neobundle.vim|.
+>
+    NeoBundle 'rhysd/vim-gfm-sytnax'
+<
+
+==============================================================================
+LICENSE                                            *vim-gfm-sytnax-license*
+
+|gfm-sytnax| is distributed under The MIT license.
+
+  Copyright (c) 2016 rhysd
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+vim:tw=78:colorcolumn=78:ts=8:ft=help:norl:et:fen:fdl=0:
