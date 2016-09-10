@@ -68,3 +68,7 @@ Following - [x] is also not highlighted.
 
 This | is :- not -: table |
 
+| inner   | highlight | tests |
+|---------|-----------|-------|
+| `code`  | @mention  | ~~x~~ |
+| :emoji: | #123      | *foo* |

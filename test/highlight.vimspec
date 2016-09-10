@@ -277,5 +277,28 @@ Describe 'Highlight'
             normal! f|
             Assert NotHighlight('githubFlavoredMarkdownTableDelimiter')
         End
+
+        It highlights inner highlights
+            normal! 15j
+
+            normal! 2l
+            Assert Highlight('githubFlavoredMarkdownCode')
+            normal! f|
+            normal! 2l
+            Assert Highlight('githubFlavoredMarkdownMention')
+            normal! f|
+            normal! 2l
+            Assert Highlight('githubFlavoredMarkdownStrikethrough')
+
+            normal!j0
+            normal! 2l
+            Assert Highlight('githubFlavoredMarkdownEmoji')
+            normal! f|
+            normal! 2l
+            Assert Highlight('githubFlavoredMarkdownIssueNumber')
+            normal! f|
+            normal! 2l
+            Assert Highlight('markdownItalic')
+        End
     End
 End
