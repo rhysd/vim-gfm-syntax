@@ -32,7 +32,7 @@ If you want to enable these extra syntax highlights in specific file, you can us
 Example: Only README.md enables extra highlight.
 
 ```vim
-let g:gfm_syntax_enable = 0
+let g:gfm_syntax_enable_always = 0
 let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
 autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
 ```

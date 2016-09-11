@@ -1,6 +1,6 @@
 Describe g:gfm_sytnax_enable_filetypes
     Before each
-        let g:gfm_syntax_enable = 0
+        let g:gfm_syntax_enable_always = 0
         let g:gfm_sytnax_enable_filetypes = ['markdown.gfm']
         augroup TestGFMCustomize
             autocmd!
@@ -16,8 +16,8 @@ Describe g:gfm_sytnax_enable_filetypes
     After each
         bdelete!
         autocmd! TestGFMCustomize
-        let g:gfm_syntax_enable = 1
-        let g:gfm_sytnax_enable_filetypes = ['markdown']
+        let g:gfm_syntax_enable_always = 1
+        let g:gfm_sytnax_enable_filetypes = []
     End
 
     It enables GFM syntax highlight extension on 'markdown.gfm' filetype

@@ -1,4 +1,4 @@
-if !g:gfm_syntax_enable && index(g:gfm_sytnax_enable_filetypes, &l:filetype) == -1
+if !g:gfm_syntax_enable_always && index(g:gfm_sytnax_enable_filetypes, &l:filetype) == -1
     finish
 endif
 
@@ -30,7 +30,9 @@ if g:gfm_syntax_highlight_emoji
     syn match githubFlavoredMarkdownEmoji ":[[:alnum:]_+-]\+:" display
 endif
 
-" issue number
+" Issue number
+"
+" #123
 if g:gfm_syntax_highlight_issue_number
     syn match githubFlavoredMarkdownIssueNumber "#\@<!#\d\+\>" display
 endif

@@ -2,8 +2,8 @@ if (exists('g:loaded_gfm_syntax') && g:loaded_gfm_syntax) || &compatible
     finish
 endif
 
-let g:gfm_syntax_enable = get(g:, 'gfm_syntax_enable', 1)
-let g:gfm_sytnax_enable_filetypes = get(g:, 'gfm_sytnax_enable_filetypes', ['markdown'])
+let g:gfm_syntax_enable_always = get(g:, 'gfm_syntax_enable_always', get(g:, 'gfm_syntax_enable', 1))
+let g:gfm_sytnax_enable_filetypes = get(g:, 'gfm_sytnax_enable_filetypes', [])
 
 let g:gfm_syntax_highlight_inline_code = get(g:, 'gfm_syntax_highlight_inline_code', 1)
 let g:gfm_syntax_highlight_mention = get(g:, 'gfm_syntax_highlight_mention', 1)
