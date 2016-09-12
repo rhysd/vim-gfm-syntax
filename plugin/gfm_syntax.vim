@@ -2,7 +2,12 @@ if (exists('g:loaded_gfm_syntax') && g:loaded_gfm_syntax) || &compatible
     finish
 endif
 
-let g:gfm_syntax_enable_always = get(g:, 'gfm_syntax_enable_always', get(g:, 'gfm_syntax_enable', 1))
+if exists('g:gfm_syntax_enable')
+    echohl WarningMsg | echom 'g:gfm_syntax_enable was renamed to g:gfm_syntax_enable_always. Please update your configuration.' | echohl None
+    let g:gfm_syntax_enable_always = g:gfm_syntax_enable
+else
+    let g:gfm_syntax_enable_always = get(g:, 'gfm_syntax_enable_always', 1)
+endif
 let g:gfm_sytnax_enable_filetypes = get(g:, 'gfm_sytnax_enable_filetypes', [])
 
 let g:gfm_syntax_highlight_inline_code = get(g:, 'gfm_syntax_highlight_inline_code', 1)
