@@ -53,6 +53,7 @@ Following - [x] is also not highlighted.
 
 1. [x] even enumeration!
 
++ [x] + is also available for list bullet!
 
 
 ## Table

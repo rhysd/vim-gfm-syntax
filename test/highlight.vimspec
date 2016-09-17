@@ -211,6 +211,16 @@ Describe 'Highlight'
             normal! f]
             Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
         End
+
+        It even highlights check box with + list
+            normal! 15j
+            normal! f[
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+            normal! fx
+            Assert Highlight('githubFlavoredMarkdownCheckBoxX')
+            normal! f]
+            Assert Highlight('githubFlavoredMarkdownCheckBoxBracket')
+        End
     End
 
     Describe githubFlavoredMarkdownTable
