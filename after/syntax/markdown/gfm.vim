@@ -13,7 +13,7 @@ endif
 "
 " @rhysd @foo/bar
 if g:gfm_syntax_highlight_mention
-    syn match githubFlavoredMarkdownMention "@\S\+" display
+    syn match githubFlavoredMarkdownMention "\%(^\|\s\)\@<=@\S\+" display
 endif
 
 " Strikethrough

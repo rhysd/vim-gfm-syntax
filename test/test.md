@@ -17,6 +17,8 @@ This is `embedded` in text.
 
 This @ is not a mention
 
+Email someone@foo.example.com is not highlighted
+
 
 ## Strikethrough
 

@@ -66,6 +66,12 @@ Describe 'Highlight'
             normal! f@
             Assert NotHighlight('githubFlavoredMarkdownMention')
         End
+
+        It does not highlight email address
+            normal! 6j
+            normal! f@
+            Assert NotHighlight('githubFlavoredMarkdownMention')
+        End
     End
 
     Describe githubFlavoredMarkdownStrikethrough
@@ -307,7 +313,7 @@ Describe 'Highlight'
             normal! 2l
             Assert Highlight('githubFlavoredMarkdownIssueNumber')
             normal! f|
-            normal! 2l
+            normal! 3l
             Assert Highlight('markdownItalic')
         End
     End
