@@ -6,7 +6,7 @@ endif
 "
 " This is `inline` code.
 if g:gfm_syntax_highlight_inline_code
-    hi def link markdownCode githubFlavoredMarkdownCode
+    syn region githubFlavoredMarkdownCode start="\%(^\|[^`\\]\)\zs`[^`]" end="`" display oneline
 endif
 
 " Mentions
@@ -45,7 +45,7 @@ endif
 if g:gfm_syntax_highlight_table
     syn match githubFlavoredMarkdownTable "^|.\+|\s*$" contains=
                 \githubFlavoredMarkdownTableDelimiter,githubFlavoredMarkdownTableAligner,githubFlavoredMarkdownTableAlignBorder,
-                \githubFlavoredMarkdownTableBorderAligner,githubFlavoredMarkdownTableBorder,markdownCode,
+                \githubFlavoredMarkdownTableBorderAligner,githubFlavoredMarkdownTableBorder,githubFlavoredMarkdownCode,
                 \markdownBoldItalic,markdownBold,markdownItalic,markdownLinkText,markdownIdDeclaration,githubFlavoredMarkdownMention,
                 \githubFlavoredMarkdownIssueNumber,githubFlavoredMarkdownStrikethrough,githubFlavoredMarkdownEmoji
     syn match githubFlavoredMarkdownTableAlignBorder ":-\+:" contained containedin=githubFlavoredMarkdownTable display
