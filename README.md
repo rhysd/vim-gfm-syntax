@@ -65,6 +65,7 @@ autocmd ColorScheme * highlight link githubFlavoredMarkdownCode CursorLine
 
 `githubFlavoredMarkdownCode` is a highlight rule for inline code.  For other rules, please see [after/syntax/markdown/gfm.vim](after/syntax/markdown/gfm.vim).  There are so many colorschemes for Vim.  One syntax file can't consider all of them.  If you feel some highlighting is not good, please customize by yourself.
 
+Note: Standard markdown syntax highlight offers `markdownCode` to highlight `inline codes`, but they also highlight code blocks.  `githubFlavoredMarkdownCode` only highlights inline codes.
 
 ## What is the Difference from [vim-flavored-markdown](https://github.com/jtratner/vim-flavored-markdown)?
 
