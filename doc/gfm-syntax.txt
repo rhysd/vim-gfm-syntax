@@ -3,14 +3,14 @@
 Author : rhysd <lin90162@yahoo.co.jp>
 Version : 1.0
 
-CONTENTS                *vim-gfm-sytnax-contents*
+CONTENTS                *vim-gfm-syntax-contents*
 
-Introduction            |vim-gfm-sytnax-introduction|
-Install                 |vim-gfm-sytnax-install|
-License                 |vim-gfm-sytnax-lisence|
+Introduction            |vim-gfm-syntax-introduction|
+Install                 |vim-gfm-syntax-install|
+License                 |vim-gfm-syntax-lisence|
 
 ==============================================================================
-INTRODUCTION                                  *vim-gfm-sytnax-introduction*
+INTRODUCTION                                  *vim-gfm-syntax-introduction*
 
 *gfm-syntax* provides extra syntax highlight for GitHub Flavored Markdown.
 GitHub adds their extra features to Markdown.  This plugin fills the gap
@@ -25,23 +25,23 @@ https://github.com/rhysd/vim-gfm-syntax#readme
 
 
 ==============================================================================
-INSTALL                                            *vim-gfm-sytnax-install*
+INSTALL                                            *vim-gfm-syntax-install*
 
 If you don't use any plugin manager, copy all files in after/, plugin/ and
 doc/ to your .vim directory.
 
 If you use a plugin manager, please follow the instruction of it to install
-|gfm-sytnax|.
+|gfm-syntax|.
 
 Below is an example for |neobundle.vim|.
 >
-    NeoBundle 'rhysd/vim-gfm-sytnax'
+    NeoBundle 'rhysd/vim-gfm-syntax'
 <
 
 ==============================================================================
-LICENSE                                            *vim-gfm-sytnax-license*
+LICENSE                                            *vim-gfm-syntax-license*
 
-|gfm-sytnax| is distributed under The MIT license.
+|gfm-syntax| is distributed under The MIT license.
 
   Copyright (c) 2016 rhysd
 

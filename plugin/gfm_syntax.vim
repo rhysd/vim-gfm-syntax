@@ -8,7 +8,7 @@ if exists('g:gfm_syntax_enable')
 else
     let g:gfm_syntax_enable_always = get(g:, 'gfm_syntax_enable_always', 1)
 endif
-let g:gfm_sytnax_enable_filetypes = get(g:, 'gfm_sytnax_enable_filetypes', [])
+let g:gfm_syntax_enable_filetypes = get(g:, 'gfm_syntax_enable_filetypes', [])
 
 let g:gfm_syntax_highlight_inline_code = get(g:, 'gfm_syntax_highlight_inline_code', 1)
 let g:gfm_syntax_highlight_mention = get(g:, 'gfm_syntax_highlight_mention', 1)
