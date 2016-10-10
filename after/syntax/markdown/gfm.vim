@@ -1,4 +1,4 @@
-if !g:gfm_syntax_enable_always && index(g:gfm_sytnax_enable_filetypes, &l:filetype) == -1
+if !g:gfm_syntax_enable_always && index(g:gfm_syntax_enable_filetypes, &l:filetype) == -1
     finish
 endif
 
