@@ -15,6 +15,8 @@ Supports for below syntax are added:
 | Check box    | `- [x]` |
 | Table        | This!   |
 
+And it also supports concealing emoji characters.
+
 
 ## Screenshot
 
