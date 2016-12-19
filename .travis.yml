@@ -6,5 +6,5 @@ before_script:
     - uname -a
     - vim --version
 script:
-    - vint --style-problem $(git ls-files | grep -e '\.vim$' | grep -v vital) --color
+    - vint --warning $(git ls-files | grep -e '\.vim$' | grep -v vital) --color
     - ./vim-themis/bin/themis test/

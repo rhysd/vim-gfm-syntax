@@ -20,7 +20,7 @@ Supports for below syntax are added:
 
 | Before | After |
 |--------|-------|
-|![before](https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/before.png)|![after](https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/after.png)|
+|![before][]|![after][]|
 
 
 ## Usage
@@ -67,6 +67,12 @@ autocmd ColorScheme * highlight link githubFlavoredMarkdownCode CursorLine
 
 Note: Standard markdown syntax highlight offers `markdownCode` to highlight `inline codes`, but they also highlight code blocks.  `githubFlavoredMarkdownCode` only highlights inline codes.
 
+## Emoji Concealing
+
+![screenshot](https://github.com/rhysd/ss/blob/master/vim-gfm-syntax/emoji-conceal.gif?raw=true)
+
+This plugin also supports concealing emojis using Vim's 'conceal' feature. When `g:gfm_syntax_emoji_conceal` is set to `1`, emojis such as `:dog:` in will be displayed as real emoji like :dog:. Original text (`:dog:`) remains as is. Concealing happens only in non-current lines.
+
 ## What is the Difference from [vim-flavored-markdown](https://github.com/jtratner/vim-flavored-markdown)?
 
 [vim-flavored-markdown](https://github.com/jtratner/vim-flavored-markdown) was created for the same purpose as this plugin, and it works well.
@@ -84,3 +90,5 @@ But it does not match to my usecase in terms of below points.
 
 This plugin is distributed under [the MIT License](LICENSE).
 
+[before]: https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/before.png
+[after]: https://raw.githubusercontent.com/rhysd/ss/master/vim-gfm-syntax/after.png

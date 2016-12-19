@@ -28,6 +28,9 @@ endif
 " :dog:
 if g:gfm_syntax_highlight_emoji
     syn match githubFlavoredMarkdownEmoji ":[[:alnum:]_+-]\+:" display
+    if g:gfm_syntax_emoji_conceal && has('conceal')
+        call gfm_syntax#emoji#apply_conceal()
+    endif
 endif
 
 " Issue number
