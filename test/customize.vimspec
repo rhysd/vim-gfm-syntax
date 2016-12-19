@@ -100,13 +100,13 @@ End
 Describe g:gfm_syntax_emoji_conceal
     Before each
         let g:gfm_syntax_emoji_conceal = 1
-        syntax enable
         new!
+        syntax enable
         set ft=markdown
     End
 
     After each
-        close!
+        bdelete!
         let g:gfm_syntax_emoji_conceal = 0
     End
 
@@ -114,5 +114,6 @@ Describe g:gfm_syntax_emoji_conceal
         call setline('.', ['There are :dog: and :cat:!', '...and :rabbit:'])
         normal! G$
         Assert Highlight('githubFlavoredMarkdownEmoji')
+        Assert Equal(&l:conceallevel, 2)
     End
 End
