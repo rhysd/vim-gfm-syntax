@@ -885,7 +885,7 @@ let s:EMOJIS = [
     \ [ '":zzz:"', '💤' ],
 \ ]
 
-function! gfm_syntax#emoji#apply_conceal()
+function! gfm_syntax#emoji#apply_conceal() abort
     setlocal conceallevel=2
     for [name, emoji] in s:EMOJIS
         execute 'syn match githubFlavoredMarkdownEmoji' name 'conceal cchar='.emoji
