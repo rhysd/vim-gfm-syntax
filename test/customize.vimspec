@@ -96,3 +96,23 @@ Describe Redefinition of syntax highlight rule
         Assert Equal(hl, 'CursorLine')
     End
 End
+
+Describe g:gfm_syntax_emoji_conceal
+    Before each
+        let g:gfm_syntax_emoji_conceal = 1
+        syntax enable
+        new!
+        set ft=markdown
+    End
+
+    After each
+        close!
+        let g:gfm_syntax_emoji_conceal = 0
+    End
+
+    It does not raise an error on loading
+        call setline('.', ['There are :dog: and :cat:!', '...and :rabbit:'])
+        normal! G$
+        Assert Highlight('githubFlavoredMarkdownEmoji')
+    End
+End
