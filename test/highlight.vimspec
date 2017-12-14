@@ -317,4 +317,18 @@ Describe 'Highlight'
             Assert Highlight('markdownItalic')
         End
     End
+
+    Describe Issue #5
+        Before each
+            call s:move_to('issue #5')
+            normal! 2j
+        End
+
+        It should be fixed
+            normal! l
+            Assert Highlight('githubFlavoredMarkdownCode')
+            normal! $
+            Assert Highlight('githubFlavoredMarkdownCode')
+        End
+    End
 End

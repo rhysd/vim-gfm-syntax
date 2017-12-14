@@ -6,7 +6,8 @@ endif
 "
 " This is `inline` code.
 if g:gfm_syntax_highlight_inline_code
-    syn region githubFlavoredMarkdownCode start="\%(^\|[^`\\]\)\zs`[^`]" end="`" display oneline
+    " Note: \%(^\|[^`\\]\)\zs`[^`] does not work (issue #5)
+    syn region githubFlavoredMarkdownCode start="\%(^\|[^`\\]\)\@<=`[^`]" end="`" display oneline
 endif
 
 " Mentions
