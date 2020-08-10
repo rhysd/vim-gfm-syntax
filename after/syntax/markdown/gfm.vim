@@ -28,9 +28,11 @@ endif
 "
 " :dog:
 if g:gfm_syntax_highlight_emoji
-    syn match githubFlavoredMarkdownEmoji ":[[:alnum:]_+-]\+:" display
     if g:gfm_syntax_emoji_conceal && has('conceal')
+        exe 'syn iskeyword '.&iskeyword.',-,:'
         call gfm_syntax#emoji#apply_conceal()
+    else
+        syn match githubFlavoredMarkdownEmoji ":[[:alnum:]_+-]\+:" display
     endif
 endif
 
