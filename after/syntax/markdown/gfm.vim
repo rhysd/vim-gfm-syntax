@@ -1,5 +1,5 @@
 if !exists('g:loaded_gfm_syntax')
-  runtime plugin/gfm_syntax.vim
+    runtime plugin/gfm_syntax.vim
 endif
 
 if !g:gfm_syntax_enable_always && index(g:gfm_syntax_enable_filetypes, &l:filetype) == -1
