@@ -892,7 +892,7 @@ endfunction
 
 function! gfm_syntax#emoji#complete(findstart, base) abort
   if a:findstart
-    return match(getline('.')[0:col('.') - 1], ':[^: \t]*$')
+    return match(getline('.')[0:col('.') - 1], ':[a-z0-9_+-]*$')
   else
     return filter(map(copy(s:EMOJIS),{_,v->v[0]}), {_,v->match(v, a:base)>=0})
   endif
