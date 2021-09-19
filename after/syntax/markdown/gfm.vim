@@ -36,6 +36,9 @@ if g:gfm_syntax_highlight_emoji
     if g:gfm_syntax_emoji_conceal && has('conceal')
         call gfm_syntax#emoji#apply_conceal()
     endif
+    if g:gfm_syntax_emoji_complete
+        setl omnifunc=gfm_syntax#emoji#complete
+    endif
 endif
 
 " Issue number
