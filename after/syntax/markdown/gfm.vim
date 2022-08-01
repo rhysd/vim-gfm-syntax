@@ -18,7 +18,8 @@ endif
 "
 " @rhysd @foo/bar
 if g:gfm_syntax_highlight_mention
-    syn match githubFlavoredMarkdownMention "\%(^\|\s\)\@<=@\S\+" display
+    " Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.
+    syn match githubFlavoredMarkdownMention "\%(^\|\s\)\@<=@[[:alnum:]-]\+" display
 endif
 
 " Strikethrough
